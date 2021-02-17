@@ -1,0 +1,846 @@
+// decoration: BoxDecoration(
+        //   gradient: LinearGradient(
+        //     begin: Alignment.topRight,
+        //     end: Alignment.bottomLeft,
+        //     colors: [Colors.green, Colors.yellow,Colors.red,],
+        //   ),
+        // ),
+        // child: Stack(
+        //   children: [
+        //     Positioned(
+        //       top: 540,
+        //       right: 190,
+        //       width: 115,
+        //       child: Container(
+        //         child: IconButton(
+        //           onPressed: () {
+        //             choiceImage();
+        //           },
+        //           icon: Icon(
+        //             Feather.folder,
+        //             size: 35,
+        //             color: Colors.black54,
+        //           ),
+        //         ),
+        //       ),
+        //     ),
+        //     Positioned(
+        //       top: 278,
+        //       right: 10,
+        //       width: 115,
+        //       child: Container(
+        //         child:
+        //             _image == null ? Text('Chose Image',style:TextStyle(fontFamily: 'Berylium',fontSize: 11,color: Colors.black),) : Image.file(_image),
+        //         // width: 100,
+        //         // height: 300,
+        //       ),
+        //     ),
+        //     Positioned(
+        //       top: 488,
+        //       right: 10,
+        //       width: 115,
+        //       child: Container(
+        //         child: DropdownButton(
+        //             isExpanded: true,
+        //             value: selectedCategory,
+        //             hint: Text('Select Categories',style: TextStyle(fontFamily: 'Berylium',fontSize: 11,color: Colors.black,fontWeight: FontWeight.bold),),
+        //             items: categoryItem.map((category) {
+        //               return DropdownMenuItem(
+        //                 value: category['names'],
+        //                 child: Text(category['names']),
+        //               );
+        //             }).toList(),
+        //             onChanged: (newValue) {
+        //               setState(() {
+        //                 selectedCategory = newValue;
+        //               });
+        //             }),
+        //       ),
+        //     ),
+        //     Positioned(
+        //       top: 260,
+        //       width: 290,
+        //       child: Container(
+        //         child: Padding(
+        //           padding: const EdgeInsets.all(8.0),
+        //           child: Padding(
+        //             padding: const EdgeInsets.all(8.0),
+        //             child: TextFormField(
+        //               maxLines: 1,
+        //               controller: title,
+        //               obscureText: false,
+        //               decoration: InputDecoration(
+        //                 border: OutlineInputBorder(),
+        //                 focusedBorder: OutlineInputBorder(
+        //                   borderSide: BorderSide(color: Colors.black54),
+        //                 ),
+        //                 prefixIcon: Icon(
+        //                   FontAwesome.edit,
+        //                   size: 19,
+        //                   color: Colors.black54,
+        //                 ),
+        //                 hintText: "Input Here....",
+        //                 hintStyle: TextStyle(
+        //                     color: Colors.black,
+        //                     fontFamily: 'Berylium',
+        //                     fontSize: 12),
+        //                 labelText: "Title",
+        //                 labelStyle:
+        //                     TextStyle(fontFamily: 'Berylium',fontSize: 11,color: Colors.black),
+        //               ),
+        //             ),
+        //           ),
+        //         ),
+        //       ),
+        //     ),
+        //     Positioned(
+        //       top: 333,
+        //       width: 100,
+        //       child: Container(
+        //         child: Padding(
+        //           padding: const EdgeInsets.all(8.0),
+        //           child: Padding(
+        //             padding: const EdgeInsets.all(8.0),
+        //             child: TextFormField(
+        //               maxLines: 8,
+        //               controller: body,
+        //               obscureText: false,
+        //               decoration: InputDecoration(
+        //                 border: OutlineInputBorder(),
+        //                 focusedBorder: OutlineInputBorder(
+        //                   borderSide: BorderSide(color: Colors.black54),
+        //                 ),
+        //                 hintText: "Input Here....",
+        //                 hintStyle: TextStyle(
+        //                     color: Colors.black,
+        //                     fontFamily: 'Berylium',
+        //                     fontSize: 12),
+                        
+        //                 labelStyle:
+        //                     TextStyle(color: Colors.black54, fontSize: 15),
+        //               ),
+        //             ),
+        //           ),
+        //         ),
+        //       ),
+        //     ),
+        //     Positioned(
+        //       top: 535,
+        //       right: 120,
+        //       width: 115,
+        //       child: Padding(
+        //         padding: const EdgeInsets.all(3.0),
+        //         child: Container(
+        //           child: Padding(
+        //             padding: const EdgeInsets.all(7.0),
+        //             child: Card(
+        //               margin: EdgeInsets.all(6),
+        //               color: Colors.black54,
+        //               shadowColor: Colors.black87,
+        //               elevation: 3,
+        //               child: Container(
+        //                 decoration: BoxDecoration(
+        //                     borderRadius: BorderRadius.circular(10)),
+        //                 height: 30,
+        //                 child: InkWell(
+        //                   splashColor: Colors.black54,
+        //                   onTap: () {
+        //                     editDeletePost();
+        //                   },
+        //                   child: Center(
+        //                     child: Text(
+        //                       editMode ? 'Update' : 'Save Post',
+        //                       style: TextStyle(
+        //                           fontSize: 15,
+        //                           fontFamily: "Berylium",
+        //                           color: Colors.white70,
+        //                           fontWeight: FontWeight.bold),
+        //                     ),
+        //                   ),
+        //                 ),
+        //               ),
+        //             ),
+        //           ),
+        //         ),
+        //       ),
+        //     ),
+        //   ],
+        // ),
+
+
+
+        DropdownButton(
+                      value: selectedCategory,
+                      hint: Text('Select Category'),
+                      items: categoryItem.map((category){
+                        return DropdownMenuItem(
+                          value: category['names'],
+                          child: Text(category['names']),);
+                      }).toList(),
+                      onChanged: (newValue) {
+                        setState(() {
+                          selectedCategory = newValue;
+                        });
+                      },
+                    ),
+
+
+
+
+
+import 'dart:convert';
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:image_picker/image_picker.dart';
+// ignore: unused_import
+// import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+
+class EditDeletePost extends StatefulWidget {
+  final postList;
+  final index;
+  final author;
+  EditDeletePost({this.postList, this.index, this.author});
+
+  @override
+  _EditDeletePostState createState() => _EditDeletePostState();
+}
+
+class _EditDeletePostState extends State<EditDeletePost> {
+  File _image;
+  final picker = ImagePicker();
+
+  String selectedCategory;
+  List categoryItem = List();
+
+  TextEditingController title = TextEditingController();
+  TextEditingController body = TextEditingController();
+
+  bool editMode = false;
+
+  Future choiceImage() async {
+    var pickedImage = await picker.getImage(source: ImageSource.gallery);
+    setState(() {
+      _image = File(pickedImage.path);
+    });
+  }
+
+  Future choiceCamera() async {
+    var pickedImage = await picker.getImage(source: ImageSource.camera);
+    setState(() {
+      _image = File(pickedImage.path);
+    });
+  }
+
+  Future editDeletePost() async {
+    var uri = Uri.parse("http://192.168.43.195/pmtn1.wp/Browse/addPost.php");
+    var request = http.MultipartRequest("POST", uri);
+    request.fields['title'] = title.text;
+    request.fields['body'] = body.text;
+    request.fields['author'] = widget.author;
+    request.fields['category_name'] = selectedCategory;
+
+    var pic = await http.MultipartFile.fromPath('images', _image.path,
+        filename: _image.path);
+    request.files.add(pic);
+
+    var response = await request.send();
+
+    if (response.statusCode == 200) {
+      print(title.text);
+    }
+  }
+
+  Future getAllCategory() async {
+    var url = "http://192.168.43.195/pmtn1.wp/Browse/categoryAll.php";
+    var response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      var jsonData = json.decode(response.body);
+      setState(() {
+        categoryItem = jsonData;
+      });
+    }
+    print(categoryItem);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getAllCategory();
+    if (widget.index != null) {
+      editMode = true;
+      title.text = widget.postList[widget.index]['title'];
+      body.text = widget.postList[widget.index]['body'];
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [Colors.red[800], Colors.yellow[800], Colors.green[900]],
+          ),
+        ),
+        child: ListView(
+          children: [
+            SizedBox(height: 40),
+            Container(
+              height: 250,
+              // width: MediaQuery.of(context).size.width,
+              child: Center(
+                child: _image == null ? Text("") : Image.file(_image),
+              ),
+            ),
+            // SizedBox(
+            //   height: 40,
+            // ),
+            Row(
+              children: [
+                IconButton(
+                  icon: Icon(Feather.image, color: Colors.black45),
+                  onPressed: choiceImage,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: IconButton(
+                    icon: Icon(Feather.camera, color: Colors.black45),
+                    onPressed: choiceCamera,
+                  ),
+                ),
+                Expanded(
+                  child: Container(),
+                ),
+                IconButton(
+                  icon: Icon(
+                    Feather.send,
+                    color: Colors.black45,
+                    size: 20,
+                  ),
+                  onPressed: () {
+                    editDeletePost();
+                  },
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextFormField(
+                controller: title,
+                obscureText: false,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black54),
+                  ),
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Icon(
+                      Feather.edit_3,
+                      size: 25,
+                      color: Colors.black54,
+                    ),
+                  ),
+                  hintText: "Input Here....",
+                  hintStyle: TextStyle(
+                      color: Colors.black54,
+                      fontFamily: 'Berylium',
+                      fontSize: 14),
+                  labelText: "Titles",
+                  labelStyle: TextStyle(color: Colors.black54, fontSize: 15),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextFormField(
+                controller: body,
+                maxLines: 7,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black54),
+                  ),
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                  ),
+                  hintText: "Input Here....",
+                  hintStyle: TextStyle(
+                      color: Colors.black54,
+                      fontFamily: 'Berylium',
+                      fontSize: 14),
+                  labelText: "",
+                ),
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: DropdownButton(
+                    value: selectedCategory,
+                    hint: Text(
+                      'Select Category',
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontFamily: 'Berylium',
+                          color: Colors.black87),
+                    ),
+                    items: categoryItem.map((category) {
+                      return DropdownMenuItem(
+                        value: category['names'],
+                        child: Text(category['names']),
+                      );
+                    }).toList(),
+                    onChanged: (newValue) {
+                      setState(() {
+                        selectedCategory = newValue;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+//PHP//
+
+<?php
+	$db = mysqli_connect("localhost","root","","pmtn1");
+	if(!$db){
+		echo "Database connect error".mysqli_error();
+	}
+    $title = $_POST ['title'];
+    $body = $_POST ['body'];
+    $category_name = $_POST ['category_name'];
+    
+
+    $images = $_FILES ['images'] ['name'];
+    $imagePath = "Uploads/".$images;
+
+    $tmp_name = $_FILES ['images']['tmp_name'];
+    move_uploaded_file($tmp_name, $imagePath);
+
+    $db->query("INSERT INTO post_table(images,title,body,category_name)VALUES('".$images."','".$title."','".$body."','".$category_name."')");
+
+    //PHP//
+
+
+
+    _image == null ? Text("") : Image.file(_image),
+                  editMode
+                      ? Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                            child: Image.network(
+                                "http://192.168.43.195/pmtn1.wp/Browse/Uploads/${widget.postList[widget.index]['images']}"),
+                            height: 200,
+                            width: MediaQuery.of(context).size.width,
+                          ),
+                      )
+                      : Text(''),
+
+
+//Showdialog//
+  showDialog(
+          context: (context),
+          builder: (context) => AlertDialog(
+            title: Text(
+              'Message From Server : 192.168.43.195',
+              style: TextStyle(
+                  fontFamily: 'Berylium',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                  color: Colors.black54),
+            ),
+            content: Text(
+              'add Succes..!!',
+              style: TextStyle(
+                  fontFamily: 'Berylium',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  color: Colors.black54),
+            ),
+            actions: [
+              RaisedButton(
+                color: Colors.red,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  'Confirm',
+                  style: TextStyle(
+                      fontFamily: 'Berylium',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 13,
+                      color: Colors.white70),
+                ),
+              ),
+            ],
+          ),
+        );
+//showdialog//
+
+.post(url, body: {"id": category[index]['id']});
+
+
+Container(
+            height: 50,
+            width: 110,
+            child: TextField(
+              decoration: InputDecoration(
+                labelText: 'Search',
+                labelStyle: TextStyle(
+                    color: Colors.white, fontFamily: 'Berylium', fontSize: 14),
+                prefixIcon: Icon(
+                  Feather.search,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+
+
+
+          Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(),
+                          ),
+                          IconButton(
+                            icon: Icon(Feather.send,),
+                            onPressed: () {
+                              addComents();
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+
+
+//
+ final id;
+  final title;
+  final image;
+  final body;
+  final author;
+  final postDate;
+  final userEmail;
+  PostDetails(
+      {this.id,
+      this.title,
+      this.image,
+      this.body,
+      this.author,
+      this.postDate,
+      this.userEmail = ""});
+
+
+      
+
+  @override
+  Widget build(BuildContext context) {
+
+    TextEditingController commentsController = TextEditingController();
+    String isLikeorDislike = "";
+
+    Future getLikes() async {
+      var url = "http://192.168.43.195/pmtn1.wp/Browse/selectLike.php";
+      var response = await http.post(url, body: {
+        "user_email": userEmail,
+        "post_id": id,
+      });
+      if (response.statusCode == 200) {
+        
+      }
+    }
+
+    Future addComents() async {
+      var url = "http://192.168.43.195/pmtn1.wp/Browse/addComments.php";
+      var response = await http.post(url, body: {
+        "comment": commentsController.text,
+        "user_email": userEmail,
+        "post_id": id,
+      });
+      if (response.statusCode == 200) {
+        Fluttertoast.showToast(msg: 'Comments Publish Success !!!');
+        Navigator.pop(context);
+      }
+    }
+
+  
+
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        elevation: 5,
+        title: Row(
+          children: [
+            Text(
+              "Details",
+              style: TextStyle(
+                  fontFamily: 'Berylium',
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(3.0),
+              child: Text(
+                "Post",
+                style: TextStyle(
+                    fontFamily: 'Berylium',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue),
+              ),
+            ),
+          ],
+        ),
+      ),
+      body: Container(
+        child: ListView(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 1),
+              child: Container(
+                height: 250,
+                width: 1500,
+                child: Container(
+                  child: FittedBox(
+                    fit: BoxFit.fill,
+                    child: Image.network(
+                      image,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: Row(
+                children: [
+                  isLikeorDislike == "One" ?
+                  Text(
+                    title,
+                    style: TextStyle(
+                        fontFamily: 'Berylium',
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold),
+                  
+                  )
+                  :IconButton(
+                    icon: Icon(Feather.thumbs_up),
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(Feather.thumbs_down),
+                    onPressed: () {
+                      Fluttertoast.showToast(msg: 'Success !!!');
+                    },
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: Text(
+                body == null ? "" : body,
+                style: TextStyle(
+                  fontFamily: 'Berylium',
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    author,
+                    style: TextStyle(
+                        fontFamily: 'Berylium',
+                        fontSize: 12,
+                        color: Colors.black),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Text(
+                    "Posted: " + postDate,
+                    style: TextStyle(
+                        fontFamily: 'Berylium',
+                        fontSize: 12,
+                        color: Colors.black),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Text(
+                          'Comments :',
+                          style: TextStyle(
+                              fontFamily: 'Berylium',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 330,
+                          child: TextField(
+                            onSubmitted: (value) {
+                              commentsController.text = value;
+                            },
+                            onChanged: (value) {
+                              if (userEmail == "") {
+                                showDialog(
+                                  context: (context),
+                                  builder: (context) => AlertDialog(
+                                    title: Text(
+                                      'Message From Server : 192.168.43.195',
+                                      style: TextStyle(
+                                          fontFamily: 'Berylium',
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                          color: Colors.black54),
+                                    ),
+                                    content: Text(
+                                      'Please login first Comments ',
+                                      style: TextStyle(
+                                          fontFamily: 'Berylium',
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14,
+                                          color: Colors.black54),
+                                    ),
+                                    actions: [
+                                      RaisedButton(
+                                        color: Colors.red,
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => Login(),
+                                            ),
+                                          );
+                                          debugPrint("First Login");
+                                        },
+                                        child: Text(
+                                          'Login',
+                                          style: TextStyle(
+                                              fontFamily: 'Berylium',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 13,
+                                              color: Colors.white70),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }
+                            },
+                            controller: commentsController,
+                            decoration: InputDecoration(
+                              labelText: '',
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: IconButton(
+                            icon: Icon(
+                              FontAwesome.send_o,
+                              color: Colors.black54,
+                            ),
+                            onPressed: () {
+                              addComents();
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+
+  //post Details//
+  // if (widget.userEmail == "") {
+                        //   showDialog(
+                        //     context: (context),
+                        //     builder: (context) => AlertDialog(
+                        //       title: Text(
+                        //         'Message From Server : 192.168.43.195',
+                        //         style: TextStyle(
+                        //             fontFamily: 'Berylium',
+                        //             fontWeight: FontWeight.bold,
+                        //             fontSize: 15,
+                        //             color: Colors.black54),
+                        //       ),
+                        //       content: Text(
+                        //         'add Succes..!!',
+                        //         style: TextStyle(
+                        //             fontFamily: 'Berylium',
+                        //             fontWeight: FontWeight.bold,
+                        //             fontSize: 14,
+                        //             color: Colors.black54),
+                        //       ),
+                        //       actions: [
+                        //         RaisedButton(
+                        //           color: Colors.red,
+                        //           onPressed: () {
+                        //             Navigator.pop(context);
+                        //           },
+                        //           child: Text(
+                        //             'Confirm',
+                        //             style: TextStyle(
+                        //                 fontFamily: 'Berylium',
+                        //                 fontWeight: FontWeight.bold,
+                        //                 fontSize: 13,
+                        //                 color: Colors.white70),
+                        //           ),
+                        //         ),
+                        //       ],
+                        //     ),
+                        //   );
+//Postdetails//

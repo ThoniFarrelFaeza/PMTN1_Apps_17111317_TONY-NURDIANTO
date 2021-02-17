@@ -1,0 +1,53 @@
+[
+{"type":"header","version":"5.0.3","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"pmtn1"},
+{"type":"table","name":"category","database":"pmtn1","data":
+[
+{"id":"44","names":"Technology","create_date":"15\/02\/2021"},
+{"id":"45","names":"Life Style","create_date":"15\/02\/2021"},
+{"id":"46","names":"Political","create_date":"15\/02\/2021"},
+{"id":"47","names":"Tour & Travel","create_date":"15\/02\/2021"},
+{"id":"48","names":"Business","create_date":"15\/02\/2021"},
+{"id":"49","names":"Game","create_date":"15\/02\/2021"},
+{"id":"50","names":"Sport","create_date":"15\/02\/2021"}
+]
+}
+,{"type":"table","name":"comments","database":"pmtn1","data":
+[
+{"id":"16","comment":"mantap","user_email":"rapi21@gmail.com","post_id":"4","comments_date":"15\/02\/2021","isSeen":"0"},
+{"id":"17","comment":"wow","user_email":"rapi21@gmail.com","post_id":"90","comments_date":"15\/02\/2021","isSeen":"1"},
+{"id":"18","comment":"siap","user_email":"rapi21@gmail.com","post_id":"90","comments_date":"15\/02\/2021","isSeen":"0"},
+{"id":"19","comment":"parancuk wkwk","user_email":"rapi21@gmail.com","post_id":"90","comments_date":"15\/02\/2021","isSeen":"0"},
+{"id":"20","comment":"hay","user_email":"rapi21@gmail.com","post_id":"90","comments_date":"15\/02\/2021","isSeen":"0"},
+{"id":"21","comment":"woooow","user_email":"ew@gmail.com","post_id":"92","comments_date":"15\/02\/2021","isSeen":"1"},
+{"id":"22","comment":"ya","user_email":"rapi21@gmail.com","post_id":"90","comments_date":"17\/02\/2021","isSeen":"0"}
+]
+}
+,{"type":"table","name":"copyright","database":"pmtn1","data":
+[
+{"name":"Copyright©Tony Nurdianto\r\n\r\n"}
+]
+}
+,{"type":"table","name":"login_register","database":"pmtn1","data":
+[
+{"id":"1","users":"Admin","passw":"1","tlp":"082295969799","email":"tonit686@gmail.com","status":"admin"},
+{"id":"53","users":"rapi","passw":"1","tlp":"081321257169","email":"rapi21@gmail.com","status":"'user'"},
+{"id":"54","users":"ade","passw":"1","tlp":"088882121212","email":"ade45@gmail.com","status":"'user'"},
+{"id":"63","users":"arip","passw":"1","tlp":"087721450076","email":"ew@gmail.com","status":"'user'"},
+{"id":"65","users":"firman","passw":"1","tlp":"089965639776","email":"firman21@gmail.com","status":"'user'"},
+{"id":"74","users":"Tony Nurdianto","passw":"1","tlp":"082295969799","email":"tonit686@gmail.com","status":"'user'"},
+{"id":"76","users":"","passw":"","tlp":"","email":"","status":"'user'"},
+{"id":"77","users":"asepudin","passw":"12345","tlp":"08521213721","email":"asepudin11@gmail.com","status":"'user'"}
+]
+}
+,{"type":"table","name":"post_table","database":"pmtn1","data":
+[
+{"id":"90","images":"image_picker7514813492800667263.jpg","author":"Admin","post_date":"15\/02\/2021","comments":"31","total_like":"100","title":"Game Gabungan Bully-Yakuza","body":"Developer game asal Indonesia, Gamecom Team baru saja merilis versi demo dari game baru buatannya yang bernama Parakacuk. Game yang sudah diumumkan beberapa waktu yang lalu ini menarik perhatian banyak orang karena konsep gamenya terinspirasi dari game-game seperti Bully dan juga Yakuza.","category_name":"Game","create_date":""},
+{"id":"91","images":"image_picker8463039828069150576.jpg","author":"Admin","post_date":"15\/02\/2021","comments":"25","total_like":"10","title":"Update Dread Out Remastered 2!","body":"Digital Happiness kini dikenal sebagai salah satu developer game asal Indonesia paling sukses berkat game horror buatannya yaitu Dreadout dan Dreadout 2. Kini pihaknya berencana untuk membuat hal baru untuk franchise game horror miliknya tersebut.","category_name":"Game","create_date":""},
+{"id":"92","images":"image_picker7640625159571412476.jpg","author":"Admin","post_date":"15\/02\/2021","comments":"88","total_like":"98","title":"Game Gratis dari Epic Game!!","body":"Epic Games sampai saat ini masih terus memberikan game gratis setiap minggunya kepada para pengguna layanan Epic Games, meskipun game yang digratiskan saat ini tidak terlalu populer, tidak ada salahnya jika kita mengklaim game yang belum pernah dimainkan.","category_name":"Game","create_date":""},
+{"id":"93","images":"image_picker1467700054964822421.jpg","author":"Admin","post_date":"15\/02\/2021","comments":"10","total_like":"32","title":"Xbox Seiries X  Terbaru 2021.","body":"Saat ini persaingan antara console PlayStation 5, Xbox Series X, dan Nintendo Switch masih terus terjadi. Tiga console tersebut berhasil terjual dengan jumlah cukup banyak di sejumlah negara, termasuk di Inggris.","category_name":"Technology","create_date":""},
+{"id":"94","images":"image_picker7158616032560426072.jpg","author":"Admin","post_date":"15\/02\/2021","comments":"20","total_like":"25","title":"Game Gabungan Bully-Yakuza","body":"Game Gabungan Bully-Yakuza Rilis ke Part 2 salah satu PR bagi Gamecom Team jika mereka ingin merilis game Parakacuk di tahun ini. Kontrol dari game tersebut bisa dibilang masih sangat buruk dan sulit untuk dikuasai. Saya mengetahui bahwa karakter Budi dapat melakukan dodge dengan menekan tombol [Space] (di PC). ","category_name":"Game","create_date":""},
+{"id":"95","images":"image_picker2548148853973993759.jpg","author":"Admin","post_date":"15\/02\/2021","comments":"5","total_like":"44","title":"Usia bukan alasan untuk Hidup.","body":"Ahli kardiologi terkemuka Indonesia, Hendra Purnomo, pensiun di usia 70 tahun, meskipun begitu, jiwa dan tubuhnya tetap muda. Beliau telah pensiun selama 39 tahun, dan sampai sekarang masih sehat dan bugar! Saat ini, sang akademisi menginjak usia 109 tahun, tapi dia masih merasa bagaikan masih berusia 60 tahun Karnataka sering olahraga.","category_name":"Sport","create_date":""}
+]
+}
+]
